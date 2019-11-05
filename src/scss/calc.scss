@@ -1,0 +1,128 @@
+.sm-calculator {
+  $self: &;
+
+  #{$self}__title {
+    display: block;
+    font-size: 32px;
+    line-height: 1.62;
+    font-weight: bold;
+    color: $mine-shaft;
+
+    &_secondary {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    &_small {
+      font-size: 14px;
+      line-height: 20px;
+      color: $silver;
+    }
+  }
+
+  #{$self}__settings {
+    max-width: 320px;
+    margin-right: 37px;
+    padding: 20px 10px 30px 10px;
+    box-shadow: 0px 2px 5px rgba(200, 200, 200, 0.6);
+    border: 1px solid $mercury;
+    border-radius: 5px;
+  }
+
+  #{$self}__input-group {
+    background-color: $concrete;
+    border-radius: 5px 5px 0 0;
+    padding: 11px 15px;
+    font-size: 12px;
+    line-height: 1.62;
+    color: $silver;
+    font-weight: bold;
+  }
+
+  #{$self}__input-top {
+  }
+
+  #{$self}__input {
+    font-size: 22px;
+    color: $black;
+    font-weight: 400;
+    background-color: unset;
+    margin-left: 7px;
+    border: none;
+    max-width: 80%;
+    margin-left: 7px;
+  }
+
+  #{$self}__label {
+    display: block;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: bold;
+    color: $silver;
+    text-transform: uppercase;
+  }
+
+  #{$self}__total {
+    padding-top: 27px;
+    border-top: 1px solid $concrete;
+  }
+
+  #{$self}__annuitet {
+    margin-top: 10px;
+    font-size: 28px;
+    line-height: 1.62;
+    font-weight: bold;
+    color: $black;
+  }
+
+  .vue-slider {
+    position: relative;
+    padding: 0 !important;
+    margin-bottom: 38px;
+    //top: 10px;
+
+    &-rail {
+      height: 2px;
+      background-color: transparent;
+    }
+
+    &-process {
+      background-color: $curious-blue;
+    }
+
+    &-dot-handle {
+      background-color: $curious-blue;
+      box-shadow: 0px 3px 5px rgba(45, 156, 219, 0.6);
+      border: 2px solid $white;
+    }
+
+    &-dot-tooltip {
+      display: none;
+    }
+
+    &-mark-step {
+      display: none;
+    }
+    
+    &-mark-label {
+      font-size: 12px;
+      line-height: 1.62;
+      color: $silver;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    &-marks {
+      .vue-slider-mark:first-child {
+        .vue-slider-mark-label {
+          //left: calc(50% + 3px);
+        }
+      }
+      .vue-slider-mark:last-child {
+        .vue-slider-mark-label {
+          //left: calc(50% - 4px);
+        }
+      }
+    }
+  }
+}

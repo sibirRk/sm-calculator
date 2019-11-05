@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import './index.scss';
 
-// import './js/script';
-import './scss/style.scss';
+import './js/script';
+import './js/calc';

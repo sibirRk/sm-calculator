@@ -8,8 +8,75 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="calculator-app">
-    Hey
+<h2 class="sm-calculator__title">Ипотека</h2>
+<div id="calculator-app" class="sm-calculator">
+  <div class="sm-calculator__wrapper">
+    <div class="sm-calculator__settings">
+      <span class="sm-calculator__title sm-calculator__title_secondary">Параметры</span>
+      <div class="sm-calculator">
+        <div class="sm-calculator__input-group">
+          <label for="sm_calculator_price" class="sm-calculator__label">Стоимость объекта</label>
+          до <input class="sm-calculator__input" type="text" v-model="price" id="sm_calculator_price">
+        </div>
+        <vue-slider
+            class="sm-calculator__input_price"
+            v-model="price"
+            :min="0"
+            :max="20000000"
+            :interval="1"
+        ></vue-slider>
+        <div class="sm-calculator__input-group">
+          <label for="sm_calculator_price" class="sm-calculator__label">Первоначальный взнос</label>
+          до <input class="sm-calculator__input" type="text" v-model="firstPay" id="sm_calculator_first_pay">
+        </div>
+        <vue-slider
+            class="sm-calculator__input_first_pay"
+            v-model="firstPay"
+            :min="0"
+            :max="20000000"
+            :interval="1"
+        ></vue-slider>
+        <div class="sm-calculator__input-group">
+          <label for="sm_calculator_price" class="sm-calculator__label">Ипотечная ставка</label>
+          до <input class="sm-calculator__input" type="text" v-model="mortgagePercent" id="sm_calculator_percent">
+        </div>
+        <vue-slider
+            class="sm-calculator__input_percent"
+            v-model="mortgagePercent"
+            :min="0"
+            :max="25"
+            :interval="0.1"
+        ></vue-slider>
+        <div class="sm-calculator__input-group">
+          <label for="sm_calculator_price" class="sm-calculator__label">Срок кредита</label>
+          до <input class="sm-calculator__input" type="text" v-model="creditPeriod" id="sm_calculator_period">
+        </div>
+        <vue-slider
+            class="sm-calculator__input_period"
+            v-model="creditPeriod"
+            :min="0"
+            :max="24"
+            :interval="1"
+            :marks="marks"
+        ></vue-slider>
+      </div>
+      <div class="sm-calculator__total">
+        <div class="sm-calculator__title sm-calculator__title_small">
+          Ваш ежемесячный аннуитетный платеж:
+        </div>
+        <div class="sm-calculator__annuitet">
+          <span
+              class="sm-calculator_pay-per-month">{{ (annuitet + '').replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') }}</span>
+          ₽/мес
+        </div>
+      </div>
+      <div class="sm-calculator__disclaimer">
+        <p>Приведенные расчеты носят предварительный характер. Окончательный расчет суммы кредита и размер ежемесячного платежа производятся банком после предоставления полного комплекта документов и проведения оценки платежеспособности клиента.</p>
+      </div>
+    </div>
   </div>
+  <div class="sm-calculator__banks"></div>
+</div>
+</div>
 </body>
 </html>
