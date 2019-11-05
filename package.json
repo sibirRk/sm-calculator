@@ -1,0 +1,46 @@
+{
+  "name": "sm-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "watch": "webpack-dev-server --mode development"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "html-webpack-plugin": "^3.2.0",
+    "vue": "^2.6.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "autoprefixer": "^9.7.1",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "node-sass-glob-importer": "^5.3.2",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "browserslist": [
+    "ie >= 9",
+    "last 8 version"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sibirRk/sm-calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sibirRk/sm-calculator/issues"
+  },
+  "homepage": "https://github.com/sibirRk/sm-calculator#readme"
+}
