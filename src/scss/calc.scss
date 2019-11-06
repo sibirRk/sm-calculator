@@ -1,6 +1,16 @@
 .sm-calculator {
   $self: &;
 
+  font-family: Formular,Helvetica,Arial,sans-serif;
+  max-width: 1260px;
+
+
+  #{$self}__settings-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
   #{$self}__title {
     display: block;
     font-size: 32px;
@@ -23,10 +33,13 @@
   #{$self}__settings {
     max-width: 320px;
     margin-right: 37px;
-    padding: 20px 10px 30px 10px;
+  }
+
+  #{$self}__settings-panel {
     box-shadow: 0px 2px 5px rgba(200, 200, 200, 0.6);
     border: 1px solid $mercury;
     border-radius: 5px;
+    padding: 20px 10px 30px 10px;
   }
 
   #{$self}__input-group {
@@ -73,6 +86,229 @@
     line-height: 1.62;
     font-weight: bold;
     color: $black;
+  }
+
+  #{$self}__disclaimer {
+    font-size: 11px;
+    line-height: 16px;
+    color: $silver;
+  }
+
+  #{$self}__banks {
+    width: 100%;
+  }
+
+  #{$self}__bank {
+    &-pane {
+      display: flex;
+      position: relative;
+      align-items: center;
+      padding: 24px 35px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 913px;
+      height: 99px;
+      box-shadow: 0px 6px 5px rgba(0, 159, 223, 0.35);
+      background-color: $bank-green;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      user-select: none;
+
+      &_bg-green {
+        background-color: $bank-green;
+      }
+
+      &_bg-lightblue {
+        background-color: $bank-lightblue;
+      }
+
+      &_bg-darkblue {
+        background-color: $bank-darkblue;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 15px;
+        background-image: url("/images/chevron-right.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        right: 31px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:active {
+        top: 2px;
+      }
+    }
+
+    &-icon {
+      height: 52px;
+      width: 52px;
+      margin-right: 25px;
+      background-color: $white;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 95%;
+      border-radius: 50%;
+    }
+
+    &-title {
+      font-size: 28px;
+      line-height: 1.62;
+      color: $white;
+      font-weight: bold;
+    }
+  }
+
+  #{$self}__expander {
+    width: 100%;
+
+    &-spoiler {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 915px;
+      border: 1px solid $mercury;
+      border-radius: 5px;
+      height: 55px;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      margin-bottom: 20px;
+
+      &:active {
+        top: 2px;
+      }
+
+      &.js-opened {
+        #{$self}__expander-text {
+          &:after {
+            transform: rotate(-180deg);
+          }
+        }
+
+        + #{$self}__expander-content {
+          transform: scaleY(1);
+        }
+      }
+    }
+
+    &-content {
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform .1s ease;
+      overflow: hidden;
+    }
+
+    #{$self}__bank-pane {
+    }
+
+    &-text {
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 400;
+      color: $royal-blue;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 11px;
+        height: 6px;
+        margin-left: 8px;
+        background-image: url("/images/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        transition: transform .1s ease;
+      }
+    }
+  }
+
+  #{$self}__objects-title {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.62;
+    color: $mine-shaft;
+    font-weight: bold;
+    margin-bottom: 35px;
+  }
+
+  #{$self}__objects-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  #{$self}__object {
+    position: relative;
+    width: 25%;
+    height: 362px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    color: $white;
+    overflow: hidden;
+    display: flex;
+
+    &:first-child {
+      width: 50%;
+    }
+
+
+    &-wrapper {
+      position: relative;
+      padding: 20px;
+      background-size: cover;
+      background-position: center;
+      flex-grow: 1;
+    }
+
+    &-title {
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    &-link {
+      display: block;
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 400;
+      color: $white;
+      text-decoration: none;
+    }
+
+    &-flats {
+      &-info {
+        position: absolute;
+        right: 20px;
+        bottom: 0;
+      }
+
+      &-title {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: bold;
+      }
+
+      &-number {
+        font-size: 150px;
+        line-height: 183px;
+        font-weight: bold;
+      }
+    }
   }
 
   .vue-slider {

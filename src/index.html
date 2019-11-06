@@ -8,74 +8,203 @@
   <title>Document</title>
 </head>
 <body>
+<script>
+  window.smObjects = [
+    {
+      id: 0,
+      title: 'Южный берег',
+      img: '/images/objects/south-coast.jpg',
+      link: '#',
+      flats: [
+        {price: 1231231}, {price: 1000000}, {price: 500000}, {price: 1231231}, {price: 7500000}, {price: 100000}
+      ]
+    },
+    {
+      id: 1,
+      title: 'Образцово',
+      img: '/images/objects/obraztsovo.jpg',
+      link: '#',
+      flats: [
+        {price: 250000}, {price: 1000000}, {price: 2200000}, {price: 1231231}, {price: 1000000}, {price: 100000}
+      ]
+    },
+    {
+      id: 2,
+      title: 'Бограда 109',
+      img: '/images/objects/bograda-109.jpg',
+      link: '#',
+      flats: [
+        {price: 1231231}, {price: 1000000}, {price: 100000}, {price: 1231231}, {price: 1000000}, {price: 100000}
+      ]
+    },
+    {
+      id: 3,
+      title: 'Александровский',
+      img: '/images/objects/aleksandrovskiy.jpg',
+      link: '#',
+      flats: [
+        {price: 1231231}, {price: 1000000}, {price: 500000}, {price: 777666}, {price: 1000000}, {price: 888888}
+      ]
+    },
+    {
+      id: 4,
+      title: 'Академгородок',
+      img: '/images/objects/akademgorodok.jpg',
+      link: '#',
+      flats: [
+        {price: 1231231}, {price: 10000000}, {price: 100000}, {price: 1231231}, {price: 100}, {price: 999999}
+      ]
+    }
+  ];
+</script>
+
 <h2 class="sm-calculator__title">Ипотека</h2>
 <div id="calculator-app" class="sm-calculator">
-  <div class="sm-calculator__wrapper">
+  <div class="sm-calculator__settings-wrapper">
     <div class="sm-calculator__settings">
-      <span class="sm-calculator__title sm-calculator__title_secondary">Параметры</span>
-      <div class="sm-calculator">
-        <div class="sm-calculator__input-group">
-          <label for="sm_calculator_price" class="sm-calculator__label">Стоимость объекта</label>
-          до <input class="sm-calculator__input" type="text" v-model="price" id="sm_calculator_price">
+      <div class="sm-calculator__settings-panel">
+
+        <span class="sm-calculator__title sm-calculator__title_secondary">Параметры</span>
+        <div class="sm-calculator">
+          <div class="sm-calculator__input-group">
+            <label for="sm_calculator_price" class="sm-calculator__label">Стоимость объекта</label>
+            до <input class="sm-calculator__input" type="text" v-model="price" id="sm_calculator_price">
+          </div>
+          <vue-slider
+              class="sm-calculator__input_price"
+              v-model="price"
+              :min="0"
+              :max="20000000"
+              :interval="1"
+          ></vue-slider>
+          <div class="sm-calculator__input-group">
+            <label for="sm_calculator_price" class="sm-calculator__label">Первоначальный взнос</label>
+            до <input class="sm-calculator__input" type="text" v-model="firstPay" id="sm_calculator_first_pay">
+          </div>
+          <vue-slider
+              class="sm-calculator__input_first_pay"
+              v-model="firstPay"
+              :min="0"
+              :max="20000000"
+              :interval="1"
+          ></vue-slider>
+          <div class="sm-calculator__input-group">
+            <label for="sm_calculator_price" class="sm-calculator__label">Ипотечная ставка</label>
+            до <input class="sm-calculator__input" type="text" v-model="mortgagePercent" id="sm_calculator_percent">
+          </div>
+          <vue-slider
+              class="sm-calculator__input_percent"
+              v-model="mortgagePercent"
+              :min="0"
+              :max="25"
+              :interval="0.1"
+          ></vue-slider>
+          <div class="sm-calculator__input-group">
+            <label for="sm_calculator_price" class="sm-calculator__label">Срок кредита</label>
+            до <input class="sm-calculator__input" type="text" v-model="creditPeriod" id="sm_calculator_period">
+          </div>
+          <vue-slider
+              class="sm-calculator__input_period"
+              v-model="creditPeriod"
+              :min="0"
+              :max="24"
+              :interval="1"
+              :marks="marks"
+          ></vue-slider>
         </div>
-        <vue-slider
-            class="sm-calculator__input_price"
-            v-model="price"
-            :min="0"
-            :max="20000000"
-            :interval="1"
-        ></vue-slider>
-        <div class="sm-calculator__input-group">
-          <label for="sm_calculator_price" class="sm-calculator__label">Первоначальный взнос</label>
-          до <input class="sm-calculator__input" type="text" v-model="firstPay" id="sm_calculator_first_pay">
-        </div>
-        <vue-slider
-            class="sm-calculator__input_first_pay"
-            v-model="firstPay"
-            :min="0"
-            :max="20000000"
-            :interval="1"
-        ></vue-slider>
-        <div class="sm-calculator__input-group">
-          <label for="sm_calculator_price" class="sm-calculator__label">Ипотечная ставка</label>
-          до <input class="sm-calculator__input" type="text" v-model="mortgagePercent" id="sm_calculator_percent">
-        </div>
-        <vue-slider
-            class="sm-calculator__input_percent"
-            v-model="mortgagePercent"
-            :min="0"
-            :max="25"
-            :interval="0.1"
-        ></vue-slider>
-        <div class="sm-calculator__input-group">
-          <label for="sm_calculator_price" class="sm-calculator__label">Срок кредита</label>
-          до <input class="sm-calculator__input" type="text" v-model="creditPeriod" id="sm_calculator_period">
-        </div>
-        <vue-slider
-            class="sm-calculator__input_period"
-            v-model="creditPeriod"
-            :min="0"
-            :max="24"
-            :interval="1"
-            :marks="marks"
-        ></vue-slider>
-      </div>
-      <div class="sm-calculator__total">
-        <div class="sm-calculator__title sm-calculator__title_small">
-          Ваш ежемесячный аннуитетный платеж:
-        </div>
-        <div class="sm-calculator__annuitet">
-          <span
-              class="sm-calculator_pay-per-month">{{ (annuitet + '').replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') }}</span>
-          ₽/мес
+        <div class="sm-calculator__total">
+          <div class="sm-calculator__title sm-calculator__title_small">
+            Ваш ежемесячный аннуитетный платеж:
+          </div>
+          <div class="sm-calculator__annuitet">
+            <span
+                class="sm-calculator_pay-per-month">{{ (annuitet + '').replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') }}</span>
+            ₽/мес
+          </div>
         </div>
       </div>
       <div class="sm-calculator__disclaimer">
         <p>Приведенные расчеты носят предварительный характер. Окончательный расчет суммы кредита и размер ежемесячного платежа производятся банком после предоставления полного комплекта документов и проведения оценки платежеспособности клиента.</p>
       </div>
     </div>
+
+    <div class="sm-calculator__banks">
+      <div class="sm-calculator__bank-pane">
+        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+        <div class="sm-calculator__bank-title">Сбербанк</div>
+      </div>
+
+      <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
+        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+        <div class="sm-calculator__bank-title">ВТБ</div>
+      </div>
+
+      <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-darkblue">
+        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+        <div class="sm-calculator__bank-title">Газпромбанк</div>
+      </div>
+
+      <div class="sm-calculator__bank-pane">
+        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+        <div class="sm-calculator__bank-title">АК БАРС</div>
+      </div>
+
+      <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
+        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+        <div class="sm-calculator__bank-title">ВТБ</div>
+      </div>
+
+      <div class="sm-calculator__expander">
+        <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened" :class="{ 'js-opened': spoilerOpened }">
+          <span class="sm-calculator__expander-text">Еще 5 программ</span>
+        </div>
+        <div class="sm-calculator__expander-content" v-if="spoilerOpened">
+          <div class="sm-calculator__bank-pane">
+            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+            <div class="sm-calculator__bank-title">АК БАРС</div>
+          </div>
+
+          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
+            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+            <div class="sm-calculator__bank-title">ВТБ</div>
+          </div>
+
+          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
+            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+            <div class="sm-calculator__bank-title">ВТБ</div>
+          </div>
+
+          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
+            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+            <div class="sm-calculator__bank-title">ВТБ</div>
+          </div>
+
+          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
+            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
+            <div class="sm-calculator__bank-title">ВТБ</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="sm-calculator__banks"></div>
+  <div class="sm-calculator__objects-title">
+    Под ваши условия подходят квартиры в {{ fitObjects.length }} {{ ourProjectsLocal }}
+  </div>
+  <div class="sm-calculator__objects-wrapper">
+    <div class="sm-calculator__object"
+         v-for="object in fitObjects"
+         :href="object.link"
+    >
+      <div class="sm-calculator__object-wrapper" :style="object.bg">
+        <div class="sm-calculator__object-title">{{ object.title }}</div>
+        <a class="sm-calculator__object-link" :href="object.link">О проекте →</a>
+        <div class="sm-calculator__object-flats-info">
+          <div class="sm-calculator__object-flats-title">Квартир</div>
+          <div class="sm-calculator__object-flats-number">{{ object.flats }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 </body>

@@ -60,7 +60,7 @@ module.exports = {
       chunkFilename: "[id].css"
     }),
     new CopyWebpackPlugin([
-      {from: 'src/public', to: './'}
+      {from: './src/public', to: './'}
     ])
   ],
   resolve: {
