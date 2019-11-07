@@ -17,7 +17,6 @@ const app = new Vue({
     firstPay: 0,
     mortgagePercent: 8,
     creditPeriod: 12,
-    annuitet: 24000,
     marks: [1, 6, 12, 18, 24, 30],
     bankModal: 0
   },
@@ -54,6 +53,27 @@ const app = new Vue({
       } else {
         return 'лет';
       }
+    },
+    annuitet: function() {
+      let flatPrice = this.price,
+          firstPay = this.firstPay,
+          percent = this.mortgagePercent,
+          period = this.creditPeriod;
+
+      let creditSum = flatPrice - firstPay,
+          percentPerMonth = percent / 12 / 100,
+          monthsAmount = 12 * period;
+
+      let payPerMonth = percentPerMonth * Math.pow(1 + percentPerMonth, monthsAmount)
+          /
+          (Math.pow(1 + percentPerMonth, monthsAmount) - 1) * creditSum;
+
+      if (payPerMonth < 0) {
+        return 0
+      } else {
+        return Math.floor(payPerMonth) + 1
+      }
+
     }
   },
   mounted() {

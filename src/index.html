@@ -345,7 +345,7 @@
           <vue-slider
               class="sm-calculator__input_percent"
               v-model="mortgagePercent"
-              :min="0"
+              :min="0.1"
               :max="25"
               :interval="0.1"
           ></vue-slider>
@@ -422,12 +422,12 @@
          :href="object.link"
     >
       <div class="sm-calculator__object-wrapper" :style="object.bg">
-        <div class="sm-calculator__object-title">{{ object.title }}</div>
+        <a class="sm-calculator__object-title" :href="object.link">{{ object.title }}</a>
         <a class="sm-calculator__object-link" :href="object.link">О проекте →</a>
-        <div class="sm-calculator__object-flats-info">
+        <a class="sm-calculator__object-flats-info" :href="object.link">
           <div class="sm-calculator__object-flats-title">Квартир</div>
           <div class="sm-calculator__object-flats-number">{{ object.flats }}</div>
-        </div>
+        </a>
       </div>
     </div>
   </div>

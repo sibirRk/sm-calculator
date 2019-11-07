@@ -251,6 +251,7 @@
   }
 
   #{$self}__object {
+    display: flex;
     position: relative;
     width: 25%;
     height: 362px;
@@ -260,7 +261,6 @@
     margin-bottom: 20px;
     color: $white;
     overflow: hidden;
-    display: flex;
 
     &:first-child {
       width: 50%;
@@ -268,6 +268,7 @@
 
 
     &-wrapper {
+      display: block;
       position: relative;
       padding: 20px;
       background-size: cover;
@@ -280,6 +281,8 @@
       line-height: 1.2;
       font-weight: bold;
       margin-bottom: 10px;
+      color: $white;
+      text-decoration: none;
     }
 
     &-link {
@@ -293,9 +296,12 @@
 
     &-flats {
       &-info {
+        display: block;
         position: absolute;
         right: 20px;
         bottom: 0;
+        color: $white;
+        text-decoration: none;
       }
 
       &-title {
