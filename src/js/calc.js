@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueSlider from 'vue-slider-component';
+import VModal from 'vue-js-modal';
 
 Vue.component('VueSlider', VueSlider);
+Vue.use(VModal);
 
 const app = new Vue({
   el: '#calculator-app',
@@ -9,16 +11,29 @@ const app = new Vue({
     spoilerOpened: false,
     fittedFlats: 5,
     fitObjects: [],
-    price: 2550000,
+    accredJKSelected: null,
+    accredObjectSelected: null,
+    price: 8650000,
     firstPay: 0,
     mortgagePercent: 8,
     creditPeriod: 12,
     annuitet: 24000,
-    marks: [0, 6, 12, 18, 24],
+    marks: [1, 6, 12, 18, 24, 30],
+    bankModal: 0
   },
   computed: {
     objects: function() {
-      return window.smObjects;
+      return window.is_calcObjects;
+    },
+    banks: function() {
+      return window.is_calcBanks;
+    },
+    accredBanks: function() {
+      if (this.accredJKSelected !== null && this.accredObjectSelected !== null) {
+        return this.objects[this.accredJKSelected].accredited[this.accredObjectSelected].banks;
+      } else {
+        return []
+      }
     },
     ourProjectsLocal: function() {
       if (this.fitObjects.length === 11 ) {
@@ -28,7 +43,20 @@ const app = new Vue({
       } else {
         return 'наших проектах';
       }
+    },
+    creditPeriodRu: function() {
+      if (this.creditPeriod === 1 || this.creditPeriod === 21) {
+        return 'год';
+      } else if (this.creditPeriod >= 10 && this.creditPeriod <= 20) {
+        return 'лет';
+      } else if (this.creditPeriod % 10 >= 2 && this.creditPeriod % 10 <= 4) {
+        return 'года';
+      } else {
+        return 'лет';
+      }
     }
+  },
+  mounted() {
   },
   watch: {
     price: function() {
@@ -53,6 +81,44 @@ const app = new Vue({
       if (objectsArray.length) {
         this.fitObjects = objectsArray;
       }
+    }
+  },
+  methods: {
+    resetAccredObj() {
+      this.accredObjectSelected = null
+    },
+    showModal(dataId) {
+      this.bankModal = dataId / 1;
+      this.$modal.show('bank-contacts');
+    },
+    updatePrice(e) {
+      let val = e.target.value;
+      this.price = val.replace(/[\s, ₽]/g, '') / 1;
+      e.target.value = this.price + ' ₽'
+    },
+    updateFirstPay(e) {
+      let val = e.target.value;
+      this.firstPay = val.replace(/[\s,₽]/g, '') / 1;
+      e.target.value = this.firstPay + ' ₽'
+    },
+    updatePercents(e) {
+      let val = e.target.value;
+      this.mortgagePercent = val.replace('%', '') / 1;
+      e.target.value = this.mortgagePercent + '%'
+    },
+    updatePeriod(e) {
+      let val = e.target.value;
+      this.creditPeriod = val.replace(/[а-я, \s]/g, '') / 1;
+      e.target.value = this.creditPeriod + ' ' + this.creditPeriodRu
+    },
+    clearRub(e) {
+      e.target.value = e.target.value.replace(/[₽, \s]/g, '');
+    },
+    clearPeriodRu(e) {
+      e.target.value = e.target.value.replace(/[а-я, \s]/g, '') / 1;
+    },
+    clearPercent(e) {
+      e.target.value = e.target.value.replace(/[%,\s]/g, '') / 1;
     }
   }
 });

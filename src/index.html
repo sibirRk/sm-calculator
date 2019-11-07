@@ -9,7 +9,146 @@
 </head>
 <body>
 <script>
-  window.smObjects = [
+  window.is_calcBanks = [
+    {
+      id: 0,
+      title: 'Сбербанк',
+      manager: 'Дельвер Екатерина',
+      phone: '+7 (967) 607-98-20',
+      logo: '/images/sberbank.png',
+      color: 'green'
+    },
+    {
+      id: 1,
+      title: 'ВТБ',
+      manager: 'Григоренко Елена',
+      phone: '+7 (950) 977-79-95',
+      logo: '/images/vtb.png',
+      color: 'darkblue'
+    },
+    {
+      id: 2,
+      title: 'Газпромбанк',
+      manager: 'Улько Алексей Викторович',
+      phone: '+7 (905) 976-48-52',
+      logo: '/images/gazprombank.png',
+      color: 'lightblue'
+    },
+    {
+      id: 3,
+      title: 'АК БАРС',
+      manager: 'Отрутько Виктор',
+      phone: '+7 (923) 276-49-00',
+      logo: '/images/akbars.png',
+      color: 'green'
+    },
+    {
+      id: 4,
+      title: 'Совкомбанк',
+      manager: 'Потехина Анастасия',
+      phone: '+7 (913) 198-28-19',
+      logo: '/images/sberbank.png',
+      color: 'lightblue'
+    },
+    {
+      id: 5,
+      title: 'Банк «ДОМ.РФ»',
+      manager: 'Нежевлева Анастасия',
+      phone: '+7 (913) 031-44-47',
+      logo: '/images/vtb.png',
+      color: 'darkblue'
+    },
+    {
+      id: 6,
+      title: 'Россельхозбанк',
+      manager: 'Бекшаева Инна',
+      phone: '+7 (913) 184-72-24',
+      logo: '/images/gazprombank.png',
+      color: 'green'
+    },
+    {
+      id: 7,
+      title: 'Абсолют Банк',
+      manager: 'Коротких Юлия',
+      phone: '+7 (905) 976-80-90',
+      logo: '/images/akbars.png',
+      color: 'lightblue'
+    },
+    {
+      id: 8,
+      title: 'Промсвязьбанк',
+      manager: 'Муленко Елена',
+      phone: '+7 (933) 331-50-86',
+      logo: '/images/sberbank.png',
+      color: 'darkblue'
+    },
+    {
+      id: 9,
+      title: 'Райффайзенбанк',
+      manager: '',
+      phone: '',
+      logo: '/images/vtb.png',
+      color: 'green'
+    },
+    {
+      id: 10,
+      title: 'СвязьБанк',
+      manager: 'Лопатина Полина',
+      phone: '+7 (983) 269-34-39',
+      logo: '/images/gazprombank.png',
+      color: 'lightblue'
+    },
+    {
+      id: 11,
+      title: 'Банк «Открытие»',
+      manager: 'Ярослав Лейман',
+      phone: '+7 (933) 334-82-52',
+      logo: '/images/akbars.png',
+      color: 'darkblue'
+    },
+    {
+      id: 12,
+      title: 'БИНБАНК',
+      manager: 'Ярослав Лейман',
+      phone: '+7 (933) 334-82-52',
+      logo: '/images/sberbank.png',
+      color: 'green'
+    },
+    {
+      id: 13,
+      title: 'Росбанк Дом',
+      manager: 'Полунченко Далер',
+      phone: '+7 (914) 941-60-80',
+      logo: '/images/vtb.png',
+      color: 'lightblue'
+    },
+    {
+      id: 14,
+      title: 'Альфа-банк',
+      manager: 'Сметанина Елена',
+      phone: '+7 (923) 271-15-92',
+      logo: '/images/gazprombank.png',
+      color: 'darkblue'
+    },
+    {
+      id: 15,
+      title: 'Левобережный',
+      manager: 'Скрябина Елена Алексеевна',
+      phone: '+7(913) 534-73-01',
+      logo: '/images/gazprombank.png',
+      color: 'green'
+    },
+    {
+      id: 16,
+      title: 'ВТБ Банк Москвы',
+      manager: 'Коренева Ольга Сергеевна',
+      phone: '+7(913) 030-04-47',
+      logo: '/images/gazprombank.png',
+      color: 'green'
+    }
+  ];
+
+  window.is_calcObjects = [
     {
       id: 0,
       title: 'Южный берег',
@@ -17,6 +156,36 @@
       link: '#',
       flats: [
         {price: 1231231}, {price: 1000000}, {price: 500000}, {price: 1231231}, {price: 7500000}, {price: 100000}
+      ],
+      accredited: [
+        {
+          liter: '15',
+          banks: [0, 1, 2, 3, 4,  5, 6, 7,  8, 10, 11, 12, 13, 14, 15]
+        },
+        {
+          liter: '16',
+          banks: [0, 1, 2, 3, 4,  5, 6, 7,  8, 10, 11, 12, 13, 14, 15, 16]
+        },
+        {
+          liter: '17 оч. 1',
+          banks: [0, 1, 2, 5, 6, 7, 9, 10, 11, 12, 13]
+        },
+        {
+          liter: '17 оч. 2',
+          banks: [0, 1, 2, 5, 6, 7, 9, 10, 11, 12, 13, 14]
+        },
+        {
+          liter: '26',
+          banks: [0, 1, 2, 5, 11, 13, 14]
+        },
+        {
+          liter: '20',
+          banks: [0, 1, 2, 5, 11, 14]
+        },
+        {
+          liter: '18',
+          banks: [0, 1, 2, 5, 14]
+        }
       ]
     },
     {
@@ -26,6 +195,16 @@
       link: '#',
       flats: [
         {price: 250000}, {price: 1000000}, {price: 2200000}, {price: 1231231}, {price: 1000000}, {price: 100000}
+      ],
+      accredited: [
+        {
+          liter: '3',
+          banks: [0, 1, 2, 3, 5, 7, 10, 11, 12, 13, 14]
+        },
+        {
+          liter: '4',
+          banks: [0]
+        }
       ]
     },
     {
@@ -34,7 +213,17 @@
       img: '/images/objects/bograda-109.jpg',
       link: '#',
       flats: [
-        {price: 1231231}, {price: 1000000}, {price: 100000}, {price: 1231231}, {price: 1000000}, {price: 100000}
+        {price: 1231231}, {price: 1000000}, {price: 100000}, {price: 1231231}, {price: 1000000}, {price: 100000}, {price: 100000}, {price: 100000}, {price: 100000}
+      ],
+      accredited: [
+        {
+          liter: '',
+          banks: [0, 1, 2, 5, 11, 13, 14]
+        },
+        {
+          liter: '',
+          banks: [0, 1, 2, 5, 11, 14]
+        }
       ]
     },
     {
@@ -44,6 +233,12 @@
       link: '#',
       flats: [
         {price: 1231231}, {price: 1000000}, {price: 500000}, {price: 777666}, {price: 1000000}, {price: 888888}
+      ],
+      accredited: [
+        {
+          liter: '',
+          banks: [0, 1, 2, 3, 11, 14]
+        }
       ]
     },
     {
@@ -52,7 +247,44 @@
       img: '/images/objects/akademgorodok.jpg',
       link: '#',
       flats: [
-        {price: 1231231}, {price: 10000000}, {price: 100000}, {price: 1231231}, {price: 100}, {price: 999999}
+        {price: 1231231}, {price: 10000000}, {price: 100000}, {price: 1231231}, {price: 100}, {price: 999999}, {price: 999999}
+      ],
+      accredited: [
+        {
+          liter: '1 корп. 1',
+          banks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        },
+        {
+          liter: '1 корп. 3',
+          banks: [0, 1, 2, 5, 4, 7, 3, 8, 10, 11, 12, 13, 14]
+        },
+        {
+          liter: '1 корп. 2',
+          banks: [0 , 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14]
+        },
+        {
+          liter: '2',
+          banks: [0, 1, 2, 5, 10, 11, 13, 14]
+        },
+        {
+          liter: '4',
+          banks: [1, 2, 5, 11]
+        }
+      ]
+    },
+    {
+      id: 5,
+      title: 'Взлетная',
+      img: '/images/objects/akademgorodok.jpg',
+      link: '#',
+      flats: [
+        {price: 1231231}, {price: 10000000}, {price: 100000}, {price: 1231231}, {price: 100}, {price: 999999}, {price: 999999}
+      ],
+      accredited: [
+        {
+          liter: '1',
+          banks: [0, 1, 2, 5, 10, 11, 12, 13, 14]
+        }
       ]
     }
   ];
@@ -67,8 +299,16 @@
         <span class="sm-calculator__title sm-calculator__title_secondary">Параметры</span>
         <div class="sm-calculator">
           <div class="sm-calculator__input-group">
-            <label for="sm_calculator_price" class="sm-calculator__label">Стоимость объекта</label>
-            до <input class="sm-calculator__input" type="text" v-model="price" id="sm_calculator_price">
+            <label
+                for="sm_calculator_price" class="sm-calculator__label"
+            >
+              Стоимость объекта</label>
+            до <input class="sm-calculator__input" type="text"
+                      id="sm_calculator_price"
+                      :value="(price + '').replace(/(\d)(?=(\d{3})+([^\d, ₽]|$))/g, '$1 ') + ' ₽'"
+                      @click="clearRub"
+                      @blur="updatePrice"
+               >
           </div>
           <vue-slider
               class="sm-calculator__input_price"
@@ -79,7 +319,12 @@
           ></vue-slider>
           <div class="sm-calculator__input-group">
             <label for="sm_calculator_price" class="sm-calculator__label">Первоначальный взнос</label>
-            до <input class="sm-calculator__input" type="text" v-model="firstPay" id="sm_calculator_first_pay">
+            до <input
+              class="sm-calculator__input" type="text" id="sm_calculator_first_pay"
+              :value="(firstPay + '').replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') + ' ₽'"
+              @click="clearRub"
+              @blur="updateFirstPay"
+          >
           </div>
           <vue-slider
               class="sm-calculator__input_first_pay"
@@ -90,7 +335,12 @@
           ></vue-slider>
           <div class="sm-calculator__input-group">
             <label for="sm_calculator_price" class="sm-calculator__label">Ипотечная ставка</label>
-            до <input class="sm-calculator__input" type="text" v-model="mortgagePercent" id="sm_calculator_percent">
+            до <input class="sm-calculator__input" type="text"
+                      id="sm_calculator_percent"
+                      :value="mortgagePercent + '%'"
+                      @blur="updatePercents"
+                      @click="clearPercent"
+          >
           </div>
           <vue-slider
               class="sm-calculator__input_percent"
@@ -101,13 +351,17 @@
           ></vue-slider>
           <div class="sm-calculator__input-group">
             <label for="sm_calculator_price" class="sm-calculator__label">Срок кредита</label>
-            до <input class="sm-calculator__input" type="text" v-model="creditPeriod" id="sm_calculator_period">
+            <input class="sm-calculator__input" type="text" id="sm_calculator_period"
+                   :value="creditPeriod + ' ' + creditPeriodRu"
+                   @blur="updatePeriod"
+                   @click="clearPeriodRu"
+            >
           </div>
           <vue-slider
               class="sm-calculator__input_period"
               v-model="creditPeriod"
               :min="0"
-              :max="24"
+              :max="30"
               :interval="1"
               :marks="marks"
           ></vue-slider>
@@ -129,59 +383,31 @@
     </div>
 
     <div class="sm-calculator__banks">
-      <div class="sm-calculator__bank-pane">
-        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-        <div class="sm-calculator__bank-title">Сбербанк</div>
-      </div>
-
-      <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
-        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-        <div class="sm-calculator__bank-title">ВТБ</div>
-      </div>
-
-      <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-darkblue">
-        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-        <div class="sm-calculator__bank-title">Газпромбанк</div>
-      </div>
-
-      <div class="sm-calculator__bank-pane">
-        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-        <div class="sm-calculator__bank-title">АК БАРС</div>
-      </div>
-
-      <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
-        <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-        <div class="sm-calculator__bank-title">ВТБ</div>
+      <div
+          :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
+          v-for="(bank, i) in banks"
+          :data-bank-id="bank.id"
+          v-if="i<5"
+          @click="showModal(bank.id)"
+      >
+        <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
+        <div class="sm-calculator__bank-title">{{ bank.title }}</div>
       </div>
 
       <div class="sm-calculator__expander">
-        <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened" :class="{ 'js-opened': spoilerOpened }">
-          <span class="sm-calculator__expander-text">Еще 5 программ</span>
+        <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened"
+             :class="{ 'js-opened': spoilerOpened }">
+          <span class="sm-calculator__expander-text">Еще {{ banks.length - 5 }} программ</span>
         </div>
         <div class="sm-calculator__expander-content" v-if="spoilerOpened">
-          <div class="sm-calculator__bank-pane">
-            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-            <div class="sm-calculator__bank-title">АК БАРС</div>
-          </div>
-
-          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
-            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-            <div class="sm-calculator__bank-title">ВТБ</div>
-          </div>
-
-          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
-            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-            <div class="sm-calculator__bank-title">ВТБ</div>
-          </div>
-
-          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
-            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-            <div class="sm-calculator__bank-title">ВТБ</div>
-          </div>
-
-          <div class="sm-calculator__bank-pane sm-calculator__bank-pane_bg-lightblue">
-            <div class="sm-calculator__bank-icon" style="background-image: url('/images/sberbank.png')"></div>
-            <div class="sm-calculator__bank-title">ВТБ</div>
+          <div
+              :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
+              v-for="(bank, i) in banks"
+              :data-bank-id="bank.id" v-if="i>=5"
+              @click="showModal(bank.id)"
+          >
+            <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
+            <div class="sm-calculator__bank-title">{{ bank.title }}</div>
           </div>
         </div>
       </div>
@@ -205,7 +431,82 @@
       </div>
     </div>
   </div>
-</div>
+  <div class="sm-calculator__accreditation">
+    <div class="sm-calculator__accreditation-title">Проверить аккредитацию дома</div>
+    <div class="sm-calculator__accreditation-header">
+      <div class="sm-calculator__accreditation-header-left">
+        <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_jk" placeholder="Проект"
+                v-model="accredJKSelected"
+                @change="resetAccredObj"
+        >
+          <option :value="null" disabled>Проект</option>
+          <option v-for="object in objects" :value="object.id">
+            {{ object.title }}
+          </option>
+        </select>
+
+        <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_object" v-if="accredJKSelected !== null" v-model="accredObjectSelected">
+          <option :value="null" disabled>Номер дома</option>
+          <option v-for="(object,i) in objects[accredJKSelected].accredited" :value="i"
+          >{{ object.liter }}</option>
+        </select>
+      </div>
+      <div class="sm-calculator__accreditation-header-right">
+        нашлось <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> программ<span v-if="accredBanks.length % 10 === 1">а</span><span v-if="accredBanks.length % 10 >1 && accredBanks.length % 10 < 5">ы</span>
+      </div>
+    </div>
+    <div class="sm-calculator__accreditation-bank-panes" v-if="accredBanks.length > 0">
+      <div
+          :class="'sm-calculator__accreditation-bank-pane sm-calculator__accreditation-bank-pane_bg-' + banks[i].color"
+          v-for="i in accredBanks"
+      >
+        <div class="sm-calculator__accreditation-bank-pane-left">
+          <div class="sm-calculator__accreditation-bank-pane-logo"
+               :style="'background-image: url(' + banks[i].logo + ')'"
+          ></div>
+          <div class="sm-calculator__accreditation-bank-pane-title">
+            {{ banks[i].title }}
+          </div>
+        </div>
+        <div class="sm-calculator__accreditation-bank-pane-center">
+          <div class="sm-calculator__accreditation-bank-pane-description">
+            подробную информацию о программах можно уточнить у специалиста банка
+          </div>
+          <div class="sm-calculator__accreditation-bank-pane-manager">
+            {{ banks[i].manager }}
+          </div>
+        </div>
+        <div class="sm-calculator__accreditation-bank-pane-right">
+          <a
+              class="sm-calculator__accreditation-bank-pane-phone-wrapper"
+              :href="'tel:' + banks[i].phone.replace(/[\s,(,),\-]/g,'')"
+          >
+            <div class="sm-calculator__accreditation-bank-pane-phone-icon"></div>
+            <div class="sm-calculator__accreditation-bank-pane-phone-number">
+              {{ banks[i].phone }}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <modal name="bank-contacts" class="sm-calculator__modal" width="400px">
+    <div class="sm-calculator__modal-title">Контактная информация банка</div>
+    <div class="sm-calculator__modal-manager-name">{{ banks[bankModal].manager }}</div>
+    <a class="sm-calculator__modal-manager-phone"
+      :href="'tel:' + banks[bankModal].phone.replace(/[\s,(,),\-]/g,'')"
+    >
+      {{ banks[bankModal].phone }}
+    </a>
+    <div class="sm-calculator__modal-bank-info">
+      <div class="sm-calculator__modal-bank-info-wrapper">
+        <div class="sm-calculator__modal-bank-logo" :style="'background-image: url(' + banks[bankModal].logo + ')'"></div>
+        <div class="sm-calculator__modal-bank-title">{{ banks[bankModal].title }}</div>
+      </div>
+    </div>
+  </modal>
 </div>
 </body>
 </html>
