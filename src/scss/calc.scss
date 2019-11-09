@@ -674,6 +674,8 @@
     }
 
     &-marks {
+      left: -6px;
+
       .vue-slider-mark:first-child {
         .vue-slider-mark-label {
           //left: calc(50% + 3px);
