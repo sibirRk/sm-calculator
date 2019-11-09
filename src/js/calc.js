@@ -84,7 +84,7 @@ const app = new Vue({
       for (let elem of this.objects) {
         let flats = 0;
         for (let flat of elem.flats) {
-          if (this.price > flat.price) {
+          if ((this.price - this.firstPay) > flat.price) {
             flats++;
           }
         }

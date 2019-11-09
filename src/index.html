@@ -446,13 +446,13 @@
         </select>
 
         <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_object" v-if="accredJKSelected !== null" v-model="accredObjectSelected">
-          <option :value="null" disabled>Номер дома</option>
+          <option :value="null" disabled>Дом</option>
           <option v-for="(object,i) in objects[accredJKSelected].accredited" :value="i"
           >{{ object.liter }}</option>
         </select>
       </div>
       <div class="sm-calculator__accreditation-header-right">
-        нашлось <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> программ<span v-if="accredBanks.length % 10 === 1">а</span><span v-if="accredBanks.length % 10 >1 && accredBanks.length % 10 < 5">ы</span>
+        нашлось <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> программ<span v-if="accredBanks.length % 10 === 1">а</span><span v-if="(accredBanks.length<10 || accredBanks.length>20) && accredBanks.length % 10 >1 && accredBanks.length % 10 < 5">ы</span>
       </div>
     </div>
     <div class="sm-calculator__accreditation-bank-panes" v-if="accredBanks.length > 0">
