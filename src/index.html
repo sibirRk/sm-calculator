@@ -395,10 +395,6 @@
       </div>
 
       <div class="sm-calculator__expander">
-        <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened"
-             :class="{ 'js-opened': spoilerOpened }">
-          <span class="sm-calculator__expander-text">Еще {{ banks.length - 5 }} программ</span>
-        </div>
         <div class="sm-calculator__expander-content" v-if="spoilerOpened">
           <div
               :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
@@ -409,6 +405,10 @@
             <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
             <div class="sm-calculator__bank-title">{{ bank.title }}</div>
           </div>
+        </div>
+        <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened"
+             :class="{ 'js-opened': spoilerOpened }">
+          <span class="sm-calculator__expander-text">Еще {{ banks.length - 5 }} программ</span>
         </div>
       </div>
     </div>

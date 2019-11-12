@@ -15,12 +15,17 @@
     }
   }
 
+  &__title {
+    font-family: 'Formular', serif;
+  }
+
   #{$self}__title {
     display: block;
     font-size: 32px;
     line-height: 1.62;
     font-weight: bold;
     color: $mine-shaft;
+    font-family: 'Formular', serif;
 
     &_secondary {
       font-size: 20px;
@@ -74,6 +79,7 @@
     border: none;
     max-width: 80%;
     margin-left: 7px;
+    font-family: 'Formular', serif;
   }
 
   #{$self}__label {
@@ -219,7 +225,7 @@
     }
 
     &-content {
-      transform: scaleY(0);
+      //transform: scaleY(0);
       transform-origin: top;
       transition: transform .1s ease;
       overflow: hidden;
@@ -378,6 +384,7 @@
       box-sizing: border-box;
       appearance: none;
       background: url(/images/chevron-down-select.svg) 95% / 5% no-repeat $concrete;
+      font-family: 'Formular', serif;
 
       &_jk {
         @include mob() {
