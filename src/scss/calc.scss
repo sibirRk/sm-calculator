@@ -4,6 +4,8 @@
   font-family: Formular,Helvetica,Arial,sans-serif;
   max-width: 1260px;
 
+  padding-bottom: 40px;
+
 
   #{$self}__settings-wrapper {
     display: flex;
@@ -111,10 +113,21 @@
   }
 
   #{$self}__banks {
-    width: 100%;
+    //width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+    box-sizing: border-box;
   }
 
   #{$self}__bank {
+    &-pane-wrapper {
+      width: calc(50%);
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+    }
     &-pane {
       display: flex;
       position: relative;
@@ -192,6 +205,8 @@
 
   #{$self}__expander {
     width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
 
     &-spoiler {
       display: flex;
@@ -229,6 +244,11 @@
       transform-origin: top;
       transition: transform .1s ease;
       overflow: hidden;
+      margin-left: -10px;
+      margin-right: -10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
     }
 
     #{$self}__bank-pane {
@@ -404,6 +424,32 @@
 
       @include mob() {
         margin-right: 0;
+      }
+    }
+
+    &-show-btn {
+      font-family: 'Formular', serif;
+      height: 58px;
+      background: #fff;
+      border: 1px solid $mercury;
+      border-radius: 5px;
+      padding: 20px;
+      color: $royal-blue;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:active {
+        position: relative;
+        top: 2px;
+        border: 1px solid darken($mercury, 10%);
+      }
+
+      &[disabled] {
+        color: $silver;
+        cursor: auto;
       }
     }
 
@@ -702,5 +748,9 @@
 
   .v--modal-overlay {
     background: rgba(black, .4);
+  }
+
+  &__seo-block {
+    margin-bottom: 30px;
   }
 }

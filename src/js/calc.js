@@ -18,7 +18,8 @@ const app = new Vue({
     mortgagePercent: 8,
     creditPeriod: 12,
     marks: [1, 6, 12, 18, 24, 30],
-    bankModal: 0
+    bankModal: 0,
+    showAccredInfo: false
   },
   computed: {
     objects: function() {

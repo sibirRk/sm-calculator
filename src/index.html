@@ -217,11 +217,11 @@
       ],
       accredited: [
         {
-          liter: '',
+          liter: 'Дом 1',
           banks: [0, 1, 2, 5, 11, 13, 14]
         },
         {
-          liter: '',
+          liter: 'Дом 2',
           banks: [0, 1, 2, 5, 11, 14]
         }
       ]
@@ -236,7 +236,7 @@
       ],
       accredited: [
         {
-          liter: '',
+          liter: '1',
           banks: [0, 1, 2, 3, 11, 14]
         }
       ]
@@ -383,32 +383,33 @@
     </div>
 
     <div class="sm-calculator__banks">
-      <div
-          :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
-          v-for="(bank, i) in banks"
-          :data-bank-id="bank.id"
-          v-if="i<5"
-          @click="showModal(bank.id)"
-      >
-        <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
-        <div class="sm-calculator__bank-title">{{ bank.title }}</div>
+      <div class="sm-calculator__bank-pane-wrapper" v-for="(bank, i) in banks" v-if="i<6">
+        <div
+            :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
+            :data-bank-id="bank.id"
+            @click="showModal(bank.id)"
+        >
+          <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
+          <div class="sm-calculator__bank-title">{{ bank.title }}</div>
+        </div>
       </div>
 
       <div class="sm-calculator__expander">
         <div class="sm-calculator__expander-content" v-if="spoilerOpened">
-          <div
-              :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
-              v-for="(bank, i) in banks"
-              :data-bank-id="bank.id" v-if="i>=5"
-              @click="showModal(bank.id)"
-          >
-            <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
-            <div class="sm-calculator__bank-title">{{ bank.title }}</div>
+          <div class="sm-calculator__bank-pane-wrapper" v-for="(bank, i) in banks">
+            <div
+                :class="'sm-calculator__bank-pane sm-calculator__bank-pane_bg-' + bank.color"
+                :data-bank-id="bank.id" v-if="i>=6"
+                @click="showModal(bank.id)"
+            >
+              <div class="sm-calculator__bank-icon" :style="'background-image: url(' + bank.logo + ')'"></div>
+              <div class="sm-calculator__bank-title">{{ bank.title }}</div>
+            </div>
           </div>
         </div>
         <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened"
              :class="{ 'js-opened': spoilerOpened }">
-          <span class="sm-calculator__expander-text">Еще {{ banks.length - 5 }} программ</span>
+          <span class="sm-calculator__expander-text">Еще {{ banks.length - 6 }} программ</span>
         </div>
       </div>
     </div>
@@ -438,6 +439,7 @@
         <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_jk" placeholder="Проект"
                 v-model="accredJKSelected"
                 @change="resetAccredObj"
+                @click="showAccredInfo = false"
         >
           <option :value="null" disabled>Проект</option>
           <option v-for="object in objects" :value="object.id">
@@ -445,17 +447,22 @@
           </option>
         </select>
 
+        <select type="text" disabled class="sm-calculator__accreditation-select sm-calculator__accreditation-select_object" v-if="accredJKSelected === null">
+          <option :value="null" disabled>Дом</option>
+        </select>
+
         <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_object" v-if="accredJKSelected !== null" v-model="accredObjectSelected">
           <option :value="null" disabled>Дом</option>
           <option v-for="(object,i) in objects[accredJKSelected].accredited" :value="i"
           >{{ object.liter }}</option>
         </select>
+        <button class="sm-calculator__accreditation-show-btn" disabled @click.prevent="showAccredInfo = true" :disabled="!accredBanks.length>0">Показать</button>
       </div>
       <div class="sm-calculator__accreditation-header-right">
         нашлось <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> программ<span v-if="accredBanks.length % 10 === 1">а</span><span v-if="(accredBanks.length<10 || accredBanks.length>20) && accredBanks.length % 10 >1 && accredBanks.length % 10 < 5">ы</span>
       </div>
     </div>
-    <div class="sm-calculator__accreditation-bank-panes" v-if="accredBanks.length > 0">
+    <div class="sm-calculator__accreditation-bank-panes" v-if="accredBanks.length > 0 && showAccredInfo">
       <div
           :class="'sm-calculator__accreditation-bank-pane sm-calculator__accreditation-bank-pane_bg-' + banks[i].color"
           v-for="i in accredBanks"
@@ -507,6 +514,9 @@
       </div>
     </div>
   </modal>
+</div>
+<div class="sm-calculator__seo-block">
+  SEO Lorem SEO ipsum dolor sit SEO amet, consectetur adipisicing elit. Accusamus alias aperiam architecto aspernatur assumenda autem cum dicta eaque explicabo, facere fugit harum hic illum incidunt ipsam iure iusto labore laudantium magnam magni, nam nesciunt numquam odio perferendis quas repellat reprehenderit sint sunt totam ullam ut veniam voluptatem voluptatibus? Aliquid, assumenda dignissimos dolor dolore eaque enim eveniet hic maxime, minus mollitia nobis non numquam odio perferendis, perspiciatis praesentium quas saepe sequi similique tempore temporibus unde voluptatibus. Culpa cumque deleniti, harum quibusdam reprehenderit voluptatibus? At facilis fugit id in ipsa libero molestias, numquam, provident qui, quia quidem suscipit tempore unde ut voluptatem!
 </div>
 </body>
 </html>
