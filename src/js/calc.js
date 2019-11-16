@@ -18,7 +18,7 @@ const app = new Vue({
     mortgagePercent: 8,
     creditPeriod: 12,
     marks: [1, 6, 12, 18, 24, 30],
-    bankModal: 0,
+    bankModal: Object.keys(window.is_calcBanks)[0],
     showAccredInfo: false
   },
   computed: {
@@ -144,5 +144,5 @@ const app = new Vue({
   }
 });
 
-
+window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
 // https://nightcatsama.github.io/vue-slider-component/#/basics/simple
