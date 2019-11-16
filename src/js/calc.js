@@ -82,7 +82,8 @@ const app = new Vue({
   watch: {
     price: function() {
       let objectsArray = [];
-      for (let elem of this.objects) {
+      for (let key in this.objects) {
+        let elem = this.objects[key];
         let flats = 0;
         for (let flat of elem.flats) {
           if ((this.price - this.firstPay) > flat.price) {
