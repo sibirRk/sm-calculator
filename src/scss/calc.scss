@@ -481,6 +481,12 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 30px;
+      
+      @include tablet() {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
 
       &-left {
         flex-wrap: wrap;
@@ -496,6 +502,11 @@
       &-right {
         text-align: right;
         flex: 1;
+        
+        @include tablet() {
+          text-align: center;
+          align-self: center;
+        }
       }
 
       &-number {

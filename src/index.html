@@ -409,7 +409,7 @@
         </div>
         <div class="sm-calculator__expander-spoiler" @click="spoilerOpened = !spoilerOpened"
              :class="{ 'js-opened': spoilerOpened }">
-          <span class="sm-calculator__expander-text">Еще {{ Object.keys(banks).length - 6 }} программ</span>
+          <span class="sm-calculator__expander-text">Еще {{ Object.keys(banks).length - 6 }} {{ $sklonyator(Object.keys(banks).length - 6, ['программа', 'программы', 'программ']) }}</span>
         </div>
       </div>
     </div>
@@ -459,7 +459,7 @@
         <button class="sm-calculator__accreditation-show-btn" disabled @click.prevent="showAccredInfo = true" :disabled="!accredBanks.length>0">Показать</button>
       </div>
       <div class="sm-calculator__accreditation-header-right">
-        нашлось <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> программ<span v-if="accredBanks.length % 10 === 1">а</span><span v-if="(accredBanks.length<10 || accredBanks.length>20) && accredBanks.length % 10 >1 && accredBanks.length % 10 < 5">ы</span>
+        {{ $sklonyator(accredBanks.length, ['нашлась', 'нашлось', 'нашлось']) }} <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> {{ $sklonyator(accredBanks.length, ['программа', 'программы', 'программ']) }}
       </div>
     </div>
     <div class="sm-calculator__accreditation-bank-panes" v-if="accredBanks.length > 0 && showAccredInfo">

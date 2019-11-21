@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import VueSlider from 'vue-slider-component';
 import VModal from 'vue-js-modal';
+import sklonyator from "../plugins/sklonyator";
 
 Vue.component('VueSlider', VueSlider);
 Vue.use(VModal);
+Vue.use(sklonyator);
 
 const app = new Vue({
   el: '#calculator-app',
