@@ -127,6 +127,14 @@
       padding-left: 10px;
       padding-right: 10px;
       box-sizing: border-box;
+
+      @include tablet() {
+        width: 100%;
+      }
+
+      @include mob() {
+        width: 100%;
+      }
     }
     &-pane {
       display: flex;
@@ -352,24 +360,34 @@
 
     &-flats {
       &-info {
-        display: block;
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 207px;
         right: 20px;
         bottom: 0;
         color: $white;
         text-decoration: none;
+        text-align: right;
       }
 
       &-title {
         font-size: 20px;
         line-height: 24px;
         font-weight: bold;
+        text-align: right;
       }
 
       &-number {
         font-size: 150px;
         line-height: 183px;
         font-weight: bold;
+
+        &.is-smaller {
+          font-size: 125px;
+          line-height: 150px;
+        }
       }
     }
 
@@ -398,6 +416,7 @@
     &-select {
       width: 300px;
       height: 58px;
+      margin-bottom: 20px;
       margin-right: 20px;
       padding: 17px 16px;
       border: 1px solid $concrete;
@@ -437,6 +456,10 @@
       color: $royal-blue;
       cursor: pointer;
 
+      @include mob() {
+        width: 100%;
+      }
+
       &:focus {
         outline: none;
       }
@@ -460,6 +483,8 @@
       margin-bottom: 30px;
 
       &-left {
+        flex-wrap: wrap;
+
         @include mob() {
           width: 100%;
           display: flex;

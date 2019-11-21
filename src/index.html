@@ -427,7 +427,7 @@
         <a class="sm-calculator__object-link" :href="object.link">О проекте →</a>
         <a class="sm-calculator__object-flats-info" :href="object.link">
           <div class="sm-calculator__object-flats-title">Квартир</div>
-          <div class="sm-calculator__object-flats-number">{{ object.flats }}</div>
+          <div class="sm-calculator__object-flats-number" :class="{'is-smaller' : (object.flats + '').length > 2}">{{ object.flats }}</div>
         </a>
       </div>
     </div>
