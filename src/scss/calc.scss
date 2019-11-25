@@ -385,7 +385,7 @@
         font-weight: bold;
 
         &.is-smaller {
-          font-size: 125px;
+          font-size: 106px;
           line-height: 150px;
         }
       }
@@ -708,6 +708,9 @@
     }
 
     &-manager {
+      &-position {
+        text-align: center;
+      }
       &-name {
         text-align: center;
         font-size: 20px;

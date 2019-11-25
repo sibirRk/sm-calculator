@@ -9,6 +9,7 @@
 </head>
 <body>
 <script>
+  window.is_calcBanksOrder = [2,3,16,15,14,13,12,11,10,9,8,7,6,5,3,1,0];
   window.is_calcBanks = {
    0: {
       id: 0,
@@ -464,7 +465,7 @@
     </div>
     <div class="sm-calculator__accreditation-bank-panes" v-if="accredBanks.length > 0 && showAccredInfo">
       <div
-          :class="'sm-calculator__accreditation-bank-pane sm-calculator__accreditation-bank-pane_bg-' + banks[i].color"
+          :class="'sm-calculator__accreditation-bank-pane sm-calculator__accreditation-bank-pane'" :style="'background-color:' + banks[i].color + ';'"
           v-for="i in accredBanks"
       >
         <div class="sm-calculator__accreditation-bank-pane-left">

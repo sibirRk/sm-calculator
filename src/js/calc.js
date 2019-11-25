@@ -30,6 +30,9 @@ const app = new Vue({
     banks: function() {
       return window.is_calcBanks;
     },
+    banksOrdered: function () {
+        return window.is_calcBanksOrder;
+    },
     accredBanks: function() {
       if (this.accredJKSelected !== null && this.accredObjectSelected !== null) {
         return this.objects[this.accredJKSelected].accredited[this.accredObjectSelected].banks;
