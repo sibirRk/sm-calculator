@@ -11,15 +11,18 @@ const app = new Vue({
   el: '#calculator-app',
   data: {
     spoilerOpened: false,
+    spoilerOpenedObj: false,
     fittedFlats: 5,
     fitObjects: [],
     accredJKSelected: null,
     accredObjectSelected: null,
-    price: 8650000,
-    firstPay: 0,
-    mortgagePercent: 8,
-    creditPeriod: 12,
-    marks: [1, 6, 12, 18, 24, 30],
+    price: 4500000,
+    minFirstPay: 450000,
+    maxFirstPay: 450000,
+    firstPay: 1500000,
+    mortgagePercent: 9,
+    creditPeriod: 25,
+    marks: [1, 6, 12, 18, 25, 30],
     bankModal: Object.keys(window.is_calcBanks)[0],
     showAccredInfo: false
   },
@@ -82,32 +85,12 @@ const app = new Vue({
 
     }
   },
-  mounted() {
+  mounted: function () {
+      this.calcFlats();
   },
   watch: {
     price: function() {
-      let objectsArray = [];
-      for (let key in this.objects) {
-        let elem = this.objects[key];
-        let flats = 0;
-        for (let flat of elem.flats) {
-          if ((this.price - this.firstPay) > flat.price) {
-            flats++;
-          }
-        }
-        if (flats > 0) {
-          objectsArray.push({
-            id: elem.id,
-            title: elem.title,
-            flats: flats,
-            bg: `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0) 100%), url('${elem.img}')`,
-            link: elem.link
-          })
-        }
-      }
-      if (objectsArray.length) {
-        this.fitObjects = objectsArray;
-      }
+        this.calcFlats();
     }
   },
   methods: {
@@ -146,6 +129,36 @@ const app = new Vue({
     },
     clearPercent(e) {
       e.target.value = e.target.value.replace(/[%,\s]/g, '') / 1;
+    },
+    calcFlats() {
+      let objectsArray = [];
+      for (let key in this.objects) {
+          let elem = this.objects[key];
+          let flats = 0;
+          let curPrice = this.price;
+          for (let flat of elem.flats) {
+              if (curPrice > parseFloat(flat.price)) {
+                  flats++;
+              }
+          }
+          if (flats > 0) {
+              objectsArray.push({
+                  id: elem.id,
+                  title: elem.title,
+                  flats: flats,
+                  bg: `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0) 100%), url('${elem.img}')`,
+                  link: elem.link + '/filter/price-розница-from-0-to-' + curPrice + '/apply/?sort=price&by=asc'
+              })
+          }
+      }
+      if (objectsArray.length) {
+          this.fitObjects = objectsArray;
+      }
+      this.maxFirstPay = this.price;
+      this.minFirstPay = Math.ceil(this.price * 0.1);
+      if (this.firstPay < this.minFirstPay) {
+          this.firstPay = this.minFirstPay;
+      }
     }
   }
 });
