@@ -9,7 +9,9 @@ Vue.use(sklonyator);
 window.is_initValues = {
     price_min: window.is_calcPriceFrom || 1690000,
     price_max: window.is_calcPrice || 4500000,
-    rate: window.is_calcRate || 9
+    rate: window.is_calcRate || 9,
+    accredJKSelected: window.is_calcObjectProjectSelected || null,
+    accredObjectSelected: window.is_calcObjectSelected || null,
 };
 
 const app = new Vue({
@@ -19,8 +21,8 @@ const app = new Vue({
     spoilerOpenedObj: false,
     fittedFlats: 5,
     fitObjects: [],
-    accredJKSelected: null,
-    accredObjectSelected: null,
+    accredJKSelected: window.is_initValues.accredJKSelected,
+    accredObjectSelected: window.is_initValues.accredObjectSelected,
     price: [window.is_initValues.price_min, window.is_initValues.price_max],
     minFirstPay: 450000,
     maxFirstPay: 450000,
@@ -29,7 +31,7 @@ const app = new Vue({
     creditPeriod: 25,
     marks: [1, 6, 12, 18, 25, 30],
     bankModal: Object.keys(window.is_calcBanks)[0],
-    showAccredInfo: false
+    showAccredInfo: window.is_calcObjectSelected != null
   },
   computed: {
     objects: function() {
@@ -42,7 +44,10 @@ const app = new Vue({
         return window.is_calcBanksOrder;
     },
     accredBanks: function() {
-      if (this.accredJKSelected !== null && this.accredObjectSelected !== null) {
+      if (this.accredJKSelected !== null && this.accredObjectSelected !== null
+          && typeof this.objects[this.accredJKSelected] !== "undefined"
+          && typeof this.objects[this.accredJKSelected].accredited[this.accredObjectSelected] !== "undefined"
+      ) {
         return this.objects[this.accredJKSelected].accredited[this.accredObjectSelected].banks;
       } else {
         return []
