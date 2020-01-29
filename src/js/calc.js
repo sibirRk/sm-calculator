@@ -6,6 +6,11 @@ import sklonyator from "../plugins/sklonyator";
 Vue.component('VueSlider', VueSlider);
 Vue.use(VModal);
 Vue.use(sklonyator);
+window.is_initValues = {
+    price_min: window.is_calcPriceFrom || 1690000,
+    price_max: window.is_calcPrice || 4500000,
+    rate: window.is_calcRate || 9
+};
 
 const app = new Vue({
   el: '#calculator-app',
@@ -16,11 +21,11 @@ const app = new Vue({
     fitObjects: [],
     accredJKSelected: null,
     accredObjectSelected: null,
-    price: 4500000,
+    price: [window.is_initValues.price_min, window.is_initValues.price_max],
     minFirstPay: 450000,
     maxFirstPay: 450000,
     firstPay: 1500000,
-    mortgagePercent: 9,
+    mortgagePercent: window.is_initValues.rate,
     creditPeriod: 25,
     marks: [1, 6, 12, 18, 25, 30],
     bankModal: Object.keys(window.is_calcBanks)[0],
@@ -64,7 +69,7 @@ const app = new Vue({
       }
     },
     annuitet: function() {
-      let flatPrice = this.price,
+      let flatPrice = this.price[1],
           firstPay = this.firstPay,
           percent = this.mortgagePercent,
           period = this.creditPeriod;
@@ -102,9 +107,11 @@ const app = new Vue({
       this.$modal.show('bank-contacts');
     },
     updatePrice(e) {
-      let val = e.target.value;
-      this.price = val.replace(/[\s, ₽]/g, '') / 1;
-      e.target.value = this.price + ' ₽'
+        let val = e.target.value;
+        this.price = val.map(function (el, i, ar) {
+            return el.replace(/[\s, ₽]/g, '') / 1
+        });
+        e.target.value = [this.price[0] + ' ₽',this.price[1] + ' ₽'];
     },
     updateFirstPay(e) {
       let val = e.target.value;
@@ -137,7 +144,8 @@ const app = new Vue({
           let flats = 0;
           let curPrice = this.price;
           for (let flat of elem.flats) {
-              if (curPrice > parseFloat(flat.price)) {
+              let flatprice = parseFloat(flat.price);
+              if (curPrice[1] >= flatprice && flatprice >= curPrice[0]) {
                   flats++;
               }
           }
@@ -147,15 +155,15 @@ const app = new Vue({
                   title: elem.title,
                   flats: flats,
                   bg: `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0) 100%), url('${elem.img}')`,
-                  link: elem.link + '/filter/price-розница-from-0-to-' + curPrice + '/apply/?sort=price&by=asc'
+                  link: elem.link + '/filter/price-розница-from-' + curPrice[0] + '-to-' + curPrice[1] + '/apply/?sort=price&by=asc'
               })
           }
       }
       if (objectsArray.length) {
           this.fitObjects = objectsArray;
       }
-      this.maxFirstPay = this.price;
-      this.minFirstPay = Math.ceil(this.price * 0.1);
+      this.maxFirstPay = this.price[1];
+      this.minFirstPay = Math.ceil(this.price[1] * 0.1);
       if (this.firstPay < this.minFirstPay) {
           this.firstPay = this.minFirstPay;
       }

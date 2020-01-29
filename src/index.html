@@ -301,15 +301,22 @@
         <div class="sm-calculator">
           <div class="sm-calculator__input-group">
             <label
-                for="sm_calculator_price" class="sm-calculator__label"
+                    for="sm_calculator_price" class="sm-calculator__label"
             >
               Стоимость объекта</label>
-            до <input class="sm-calculator__input" type="text"
+            от <input class="sm-calculator__input" type="text"
                       id="sm_calculator_price"
-                      :value="(price + '').replace(/(\d)(?=(\d{3})+([^\d, ₽]|$))/g, '$1 ') + ' ₽'"
+                      :value="(price[0] + '').replace(/(\d)(?=(\d{3})+([^\d, ₽]|$))/g, '$1 ') + ' ₽'"
                       @click="clearRub"
                       @blur="updatePrice"
-               >
+          >
+            <br>
+            до <input class="sm-calculator__input" type="text"
+                      id="sm_calculator_price_2"
+                      :value="(price[1] + '').replace(/(\d)(?=(\d{3})+([^\d, ₽]|$))/g, '$1 ') + ' ₽'"
+                      @click="clearRub"
+                      @blur="updatePrice"
+          >
           </div>
           <vue-slider
               class="sm-calculator__input_price"
