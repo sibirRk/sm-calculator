@@ -10,6 +10,8 @@ window.is_initValues = {
     price_min: window.is_calcPriceFrom || 1690000,
     price_max: window.is_calcPrice || 4500000,
     rate: window.is_calcRate || 9,
+    creditPeriod: window.is_calcYears || 25,
+    firstPay: window.is_calcFirstPay || 1500000,
     accredJKSelected: window.is_calcObjectProjectSelected || null,
     accredObjectSelected: window.is_calcObjectSelected || null,
 };
@@ -26,9 +28,9 @@ const app = new Vue({
     price: [window.is_initValues.price_min, window.is_initValues.price_max],
     minFirstPay: 450000,
     maxFirstPay: 450000,
-    firstPay: 1500000,
+    firstPay: window.is_initValues.firstPay,
     mortgagePercent: window.is_initValues.rate,
-    creditPeriod: 25,
+    creditPeriod: window.is_initValues.creditPeriod,
     marks: [1, 6, 12, 18, 25, 30],
     bankModal: Object.keys(window.is_calcBanks)[0],
     showAccredInfo: window.is_calcObjectSelected != null
