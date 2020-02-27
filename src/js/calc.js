@@ -33,7 +33,8 @@ const app = new Vue({
     creditPeriod: window.is_initValues.creditPeriod,
     marks: [1, 6, 12, 18, 25, 30],
     bankModal: Object.keys(window.is_calcBanks)[0],
-    showAccredInfo: window.is_calcObjectSelected != null
+    showAccredInfo: window.is_calcObjectSelected != null,
+    hideObjectSelect: false,
   },
   computed: {
     objects: function() {
@@ -46,14 +47,22 @@ const app = new Vue({
         return window.is_calcBanksOrder;
     },
     accredBanks: function() {
-      if (this.accredJKSelected !== null && this.accredObjectSelected !== null
+      let banks = [];
+      this.hideObjectSelect = false;
+      if(this.accredJKSelected !== null
+          && typeof this.objects[this.accredJKSelected] !== "undefined"
+          && typeof this.objects[this.accredJKSelected].banks !== "undefined"
+      ) {
+          banks = this.objects[this.accredJKSelected].banks;
+          this.hideObjectSelect = true;
+      }
+      else if (this.accredJKSelected !== null && this.accredObjectSelected !== null
           && typeof this.objects[this.accredJKSelected] !== "undefined"
           && typeof this.objects[this.accredJKSelected].accredited[this.accredObjectSelected] !== "undefined"
       ) {
-        return this.objects[this.accredJKSelected].accredited[this.accredObjectSelected].banks;
-      } else {
-        return []
+          banks = this.objects[this.accredJKSelected].accredited[this.accredObjectSelected].banks;
       }
+      return banks;
     },
     ourProjectsLocal: function() {
       if (this.fitObjects.length === 11 ) {
