@@ -176,7 +176,14 @@ const app = new Vue({
           }
       }
       if (objectsArray.length) {
-          this.fitObjects = objectsArray;
+          let compare = function (a, b) {
+              if (a.flats < b.flats)
+                  return 1;
+              if (a.flats > b.flats)
+                  return -1;
+              return 0;
+          };
+          this.fitObjects = objectsArray.sort(compare);
       }
       this.maxFirstPay = this.price[1];
       this.minFirstPay = Math.ceil(this.price[1] * 0.1);
