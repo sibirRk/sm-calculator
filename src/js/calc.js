@@ -25,7 +25,7 @@ const app = new Vue({
     fitObjects: [],
     accredJKSelected: window.is_initValues.accredJKSelected,
     accredObjectSelected: window.is_initValues.accredObjectSelected,
-    price: [window.is_initValues.price_min, window.is_initValues.price_max],
+    price: window.is_initValues.price_max,
     minFirstPay: 450000,
     maxFirstPay: 450000,
     firstPay: window.is_initValues.firstPay,
@@ -85,7 +85,7 @@ const app = new Vue({
       }
     },
     annuitet: function() {
-      let flatPrice = this.price[1],
+      let flatPrice = this.price,
           firstPay = this.firstPay,
           percent = this.mortgagePercent,
           period = this.creditPeriod;
@@ -124,10 +124,8 @@ const app = new Vue({
     },
     updatePrice(e) {
         let val = e.target.value;
-        this.price = val.map(function (el, i, ar) {
-            return el.replace(/[\s, ₽]/g, '') / 1
-        });
-        e.target.value = [this.price[0] + ' ₽',this.price[1] + ' ₽'];
+        this.price = val.replace(/[\s,₽]/g, '') / 1;
+        e.target.value = this.price + ' ₽';
     },
     updateFirstPay(e) {
       let val = e.target.value;
@@ -161,7 +159,7 @@ const app = new Vue({
           let curPrice = this.price;
           for (let flat of elem.flats) {
               let flatprice = parseFloat(flat.price);
-              if (curPrice[1] >= flatprice && flatprice >= curPrice[0]) {
+              if (curPrice >= flatprice ) {
                   flats++;
               }
           }
@@ -171,7 +169,7 @@ const app = new Vue({
                   title: elem.title,
                   flats: flats,
                   bg: `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0) 100%), url('${elem.img}')`,
-                  link: elem.link + '/filter/price-розница-from-' + curPrice[0] + '-to-' + curPrice[1] + '/apply/?sort=price&by=asc'
+                  link: elem.link + '/filter/price-розница-to-' + curPrice + '/apply/?sort=price&by=asc'
               })
           }
       }
@@ -185,8 +183,8 @@ const app = new Vue({
           };
           this.fitObjects = objectsArray.sort(compare);
       }
-      this.maxFirstPay = this.price[1];
-      this.minFirstPay = Math.ceil(this.price[1] * 0.1);
+      this.maxFirstPay = this.price;
+      this.minFirstPay = Math.ceil(this.price * 0.1);
       if (this.firstPay < this.minFirstPay) {
           this.firstPay = this.minFirstPay;
       }

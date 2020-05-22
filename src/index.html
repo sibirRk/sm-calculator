@@ -301,16 +301,9 @@
         <div class="sm-calculator">
           <div class="sm-calculator__input-group">
             <label
-                    for="sm_calculator_price" class="sm-calculator__label"
+                    for="sm_calculator_price_2" class="sm-calculator__label"
             >
               Стоимость объекта</label>
-            от <input class="sm-calculator__input" type="text"
-                      id="sm_calculator_price"
-                      :value="(price[0] + '').replace(/(\d)(?=(\d{3})+([^\d, ₽]|$))/g, '$1 ') + ' ₽'"
-                      @click="clearRub"
-                      @blur="updatePrice"
-          >
-            <br>
             до <input class="sm-calculator__input" type="text"
                       id="sm_calculator_price_2"
                       :value="(price[1] + '').replace(/(\d)(?=(\d{3})+([^\d, ₽]|$))/g, '$1 ') + ' ₽'"
@@ -326,7 +319,7 @@
               :interval="1"
           ></vue-slider>
           <div class="sm-calculator__input-group">
-            <label for="sm_calculator_price" class="sm-calculator__label">Первоначальный взнос</label>
+            <label for="sm_calculator_first_pay" class="sm-calculator__label">Первоначальный взнос</label>
             до <input
               class="sm-calculator__input" type="text" id="sm_calculator_first_pay"
               :value="(firstPay + '').replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') + ' ₽'"
@@ -342,7 +335,7 @@
               :interval="1"
           ></vue-slider>
           <div class="sm-calculator__input-group">
-            <label for="sm_calculator_price" class="sm-calculator__label">Ипотечная ставка</label>
+            <label for="sm_calculator_percent" class="sm-calculator__label">Ипотечная ставка</label>
             до <input class="sm-calculator__input" type="text"
                       id="sm_calculator_percent"
                       :value="mortgagePercent + '%'"
@@ -358,7 +351,7 @@
               :interval="0.1"
           ></vue-slider>
           <div class="sm-calculator__input-group">
-            <label for="sm_calculator_price" class="sm-calculator__label">Срок кредита</label>
+            <label for="sm_calculator_period" class="sm-calculator__label">Срок кредита</label>
             <input class="sm-calculator__input" type="text" id="sm_calculator_period"
                    :value="creditPeriod + ' ' + creditPeriodRu"
                    @blur="updatePeriod"
