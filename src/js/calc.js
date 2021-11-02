@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import VueSlider from 'vue-slider-component';
 import VModal from 'vue-js-modal';
+import vSelect from 'vue-select';
 import sklonyator from "../plugins/sklonyator";
 
 Vue.component('VueSlider', VueSlider);
+Vue.component('v-select', vSelect);
+
 Vue.use(VModal);
 Vue.use(sklonyator);
+
 window.is_initValues = {
     price_min: window.is_calcPriceFrom || 1690000,
     price_max: window.is_calcPrice || 4500000,
@@ -19,6 +23,7 @@ window.is_initValues = {
 const app = new Vue({
   el: '#calculator-app',
   data: {
+    test: null,
     spoilerOpened: false,
     spoilerOpenedObj: false,
     fittedFlats: 5,
@@ -188,7 +193,10 @@ const app = new Vue({
       if (this.firstPay < this.minFirstPay) {
           this.firstPay = this.minFirstPay;
       }
-    }
+    },
+    getOptionLabel(el) {
+      return el.title
+    },
   }
 });
 

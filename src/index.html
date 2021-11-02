@@ -437,28 +437,50 @@
     <div class="sm-calculator__accreditation-title">Проверить аккредитацию дома</div>
     <div class="sm-calculator__accreditation-header">
       <div class="sm-calculator__accreditation-header-left">
-        <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_jk" placeholder="Проект"
-                v-model="accredJKSelected"
-                @change="resetAccredObj"
-                @click="showAccredInfo = false"
+        <v-select
+          class="sm-calculator__v-select sm-calculator__v-select_jk"
+          v-model="accredJKSelected"
+          :options="objects" 
+          :reduce="object => object.id"
+          :get-option-label="getOptionLabel"
+          placeholder="Проект"
+          @click="showAccredInfo = false"
+          @open="resetAccredObj"
         >
-          <option :value="null" disabled>Проект</option>
-          <option v-for="object in objects" :value="object.id">
-            {{ object.title }}
-          </option>
-        </select>
+          <template #open-indicator="{ attributes }">
+            <img src="/images/chevron-down-select.svg" v-bind="attributes">
+          </template>
+        </v-select>
+        
+        <v-select
+          v-if="accredJKSelected !== null"
+          class="sm-calculator__v-select sm-calculator__v-select_object"
+          v-model="accredObjectSelected"
+          :options="objects[accredJKSelected].accredited.map((el, index) => ({ label: el.liter, code: index, ...el }))"
+          :reduce="object => object.code"
+          placeholder="Дом"
+          :disabled="accredJKSelected === null"
+        >
+          <template #open-indicator="{ attributes }">
+            <img src="/images/chevron-down-select.svg" v-bind="attributes">
+          </template>
+        </v-select>
 
-        <select type="text" disabled class="sm-calculator__accreditation-select sm-calculator__accreditation-select_object" v-if="accredJKSelected === null">
-          <option :value="null" disabled>Дом</option>
-        </select>
+        <v-select
+          v-else
+          class="sm-calculator__v-select sm-calculator__v-select_object"
+          :options="[]"
+          placeholder="Дом"
+          disabled
+        >
+          <template #open-indicator="{ attributes }">
+            <img src="/images/chevron-down-select.svg" v-bind="attributes">
+          </template>
+        </v-select>
 
-        <select type="text" class="sm-calculator__accreditation-select sm-calculator__accreditation-select_object" v-if="accredJKSelected !== null" v-model="accredObjectSelected">
-          <option :value="null" disabled>Дом</option>
-          <option v-for="(object,i) in objects[accredJKSelected].accredited" :value="i"
-          >{{ object.liter }}</option>
-        </select>
         <button class="sm-calculator__accreditation-show-btn" disabled @click.prevent="showAccredInfo = true" :disabled="!accredBanks.length>0">Показать</button>
       </div>
+
       <div class="sm-calculator__accreditation-header-right">
         {{ $sklonyator(accredBanks.length, ['нашлась', 'нашлось', 'нашлось']) }} <span class="sm-calculator__accreditation-header-number">{{ accredBanks.length }}</span> {{ $sklonyator(accredBanks.length, ['программа', 'программы', 'программ']) }}
       </div>
