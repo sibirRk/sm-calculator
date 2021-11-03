@@ -16,8 +16,8 @@ window.is_initValues = {
     rate: window.is_calcRate || 9,
     creditPeriod: window.is_calcYears || 25,
     firstPay: window.is_calcFirstPay || 1500000,
-    accredJKSelected: window.is_calcObjectProjectSelected || null,
-    accredObjectSelected: window.is_calcObjectSelected || null,
+    accredJKSelected: (window.is_calcObjectProjectSelected !== null ? window.is_calcObjectProjectSelected : null),
+    accredObjectSelected: (window.is_calcObjectSelected !== null ? window.is_calcObjectSelected : null),
 };
 
 const app = new Vue({
