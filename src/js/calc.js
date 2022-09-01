@@ -38,7 +38,6 @@ const app = new Vue({
     creditPeriod: window.is_initValues.creditPeriod,
     marks: [1, 6, 12, 18, 25, 30],
     bankModal: Object.keys(window.is_calcBanks)[0],
-    showAccredInfo: window.is_calcObjectSelected != null,
     hideObjectSelect: false,
   },
   computed: {
@@ -174,7 +173,11 @@ const app = new Vue({
                   title: elem.title,
                   flats: flats,
                   bg: `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0) 100%), url('${elem.img}')`,
-                  link: elem.link + '/filter/price-розница-to-' + curPrice + '/apply/?sort=price&by=asc'
+                  img: elem.img,
+                  link: elem.link + '/filter/price-розница-to-' + curPrice + '/apply/?sort=price&by=asc',
+                  format: elem.format,
+                  is_new: !!elem.is_new,
+                  icon: elem.icon,
               })
           }
       }
